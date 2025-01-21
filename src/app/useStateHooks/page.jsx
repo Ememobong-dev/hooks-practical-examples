@@ -1,31 +1,44 @@
-"use client"
+"use client";
 
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 const page = () => {
-    const [color, setColor] = useState("Blue");
-    const [carDetails, setCarDetails] = useState({
-      brand : "Ferrari",
-      model: "Roma",
-      year: "2023",
-      color: "Red"
-      
-    });
+  const [count, setCount] = useState(0);
 
-    const handleChangeColor = () => {
-      setColor("Purple")
-    } 
+  const handleIncrease = () => {
+    setCount((prev) => prev + 1);
+  };
+
+  const handleDecrease = () => {
+    setCount((prev) => prev - 1 < 0 ? 0 : prev - 1 );
+  };
+
 
 
   return (
     <div>
-      <h1 className='text-3xl text-center text-slate-900'>I love the color {color}!</h1>
-      <button className='py-2 px-8 bg-blue-950 text-white mt-5 rounded-3xl flex justify-center' onClick={handleChangeColor}>Change to Purple</button>
+      <h1 className="font-bold text-3xl text-center">USE STATE EXAMPLE</h1>
 
-      <h1 className='text-3xl text-center text-[orange]'>My {carDetails.brand}</h1>
-      <p>It is a {carDetails.color} {carDetails.model} from {carDetails.year} </p>
+      {/* MANAGING A COUNTER WITH useState */}
+      <div className="flex items-center justify-center gap-8 mt-5">
+        <button
+          onClick={handleIncrease}
+          className="bg-blue-800 text-white rounded-3xl py-2 px-8"
+        >
+          {" "}
+          Increase{" "}
+        </button>
+        <p> {count} </p>
+        <button
+          onClick={handleDecrease}
+          className="bg-orange-800 text-white rounded-3xl py-2 px-8"
+        >
+          {" "}
+          Decrease{" "}
+        </button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;
